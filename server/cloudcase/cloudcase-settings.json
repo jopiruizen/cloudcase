@@ -1,0 +1,60 @@
+{
+	db_path : "mongodb://localhost:27017/air21",
+	db_user: "air21_admin",
+	db_password: "air21_pass_14344",
+	upload_public_directory: "files",
+	upload_archives: "private/archives",  
+
+	collections: {
+        branches : ["_id",  "area", "location",  "partner_type", "zipcode", "longitude", "latitude",  "telephone_1", "telephone_2", "telephone_3" , "branch_name", "schedule_1", "time_1", "schedule_2", "time_2", "schedule_3", "time_3", "address", "email" ,   "date_created", "date_modified", "row_status"],
+	
+		packages: ["_id", "title", "img" , "type", "length", "width", "height",  "date_created", "date_modified", "row_status"],
+		zones: ["_id" , "loc_id" , "area",  "zone",  "date_created", "date_modified", "row_status"],
+		rate_scale: ["_id" , "zone_from", "zone_to" , "scale",  "date_created", "date_modified", "row_status"],
+		rates: ["_id" , "package_type", "per_kg" , "scale_INTRA",  "scale_1", "scale_2", "scale_3", "scale_4",  "date_created", "date_modified", "row_status"],
+ 		branch_rating : ["_id" , "branch_id" , "rate" ,   "date_created", "date_modified", "row_status"]
+ 	},
+	 
+	signup_collection : "users",
+	signup_required_fields: [  "email", "password" ],
+	signup_unique_fields:[ "email"],
+ 	signup_encrypted_fields: ["password"],
+	 
+	login_collection: "users",
+	login_required_fields: ["email", "password"],
+	login_encrypted_fields: ["password"],
+	
+	admin_session_timeout: 9000,
+	app_session_expires: true,
+	app_session_timeout: 3600,
+	 
+	guest_access:  {name: "air21_guest", secret:"air21_secret" ,  key: "b152d614002f0fd322d5b73bf85e95f7"  },
+	guest_allowed_routes: [
+		"/api/find",
+		"/api/sync",
+		"/api/forgot_password",
+		"/api/email"
+	],
+	
+	emails: {
+		forgot_password: { 
+		
+				password_field: "password",
+				name_fields: [ "firstname", "lastname"],
+				transport:"SMTP", 
+				server:"Gmail" ,  
+				user: "info.gasgas@gmail.com", 
+				pass:"Gasgaspinas14344",
+			
+				subject:"Gasgas Pinas Reset Password",
+				
+				body_greetings: "Sir/Ma'am",
+				body_header:"You've reset your password, please login again using the password:",
+				body_footer:"Thank you very much , for using gasgas." ,
+				body_closing:"Sincerely,\n\nGasgas Pinas Founder"
+		}
+	},
+	
+	guest_allowed_collections:[ "branches", "zones", "packages", "rate_scale", "rates" ]
+	 
+}

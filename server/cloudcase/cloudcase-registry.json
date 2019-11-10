@@ -1,0 +1,29 @@
+{
+	app_domains: [
+ 		"*" ,
+ 		"air21.com.ph"
+	],
+	
+	admin_domains: [ 
+		"*",
+		"air21.com.ph",
+		"localhost:4421",
+		"localhost" 
+		 
+	],
+	
+	apps: [
+		{  app_id:"DP.Air21",   secret:"air21_secret" , app_key: "6e98c660847c0896b401c4a522a61975" }
+	],
+		
+	admin: [
+		{ name: "air21_admin" , secret: "air21_secret" , password:"413f2b3c8b7f30ad805bb8bfe85a9080" , admin_key:"58e6e7e44dd3c162fa5606c687f6a925"   }
+	],
+ 
+	ignored_routes:[
+		"/api/login",
+		"/api/signup",
+		"/api/admin_login",
+		"air21_pass_14344"
+	]
+}
